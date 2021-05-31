@@ -1,0 +1,17 @@
+package com.digitalinnovation.java.kubernetes.config;
+
+import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
+import org.springframework.context.annotation.Bean;
+
+import io.micrometer.core.instrument.MeterRegistry;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class MetricsConfig {
+
+    @Bean
+    MeterRegistryCustomizer<MeterRegistry> metricsCommonTags() {
+        return registry -> registry.config().commonTags("application", "K8S-DEMO");
+    }
+
+}
